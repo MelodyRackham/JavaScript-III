@@ -58,4 +58,6 @@ let myGhost = {
   boo: 'booooo! 👻',
 };
 
-ghost.call(myGhost);
+friendlyGhost = ghost.bind(myGhost);
+
+friendlyGhost();
