@@ -12,17 +12,50 @@ that is created and returned by the constructor function. (NEW Binding)
 */
 
 // Principle 1
-
 // code example for Window Binding
-
+function sayMelody(name) {
+  console.log(this);
+  return name;
+}
+sayMelody('Melody');
 // Principle 2
-
 // code example for Implicit Binding
+const myObj = {
+  greeting: 'Hello',
+  sayHello: function(name) {
+    console.log(`${this.greeting} my name is ${name}`);
+    console.log(this);
+  },
+};
+myObj.sayHello('Melody');
 
 // Principle 3
-
 // code example for New Binding
+function CordialPerson(greeter) {
+  this.greeting = 'Hello ';
+  this.greeter = greeter;
+  this.speak = function() {
+    console.log(this.greeting + this.greeter);
+    console.log(this);
+  };
+}
+
+const jerry = new CordialPerson('Newman');
+const newman = new CordialPerson('Jerry');
+
+jerry.speak();
+newman.speak();
 
 // Principle 4
-
 // code example for Explicit Binding
+
+function ghost() {
+  console.log(this.boo);
+}
+
+let myGhost = {
+  name: 'Casper',
+  boo: 'booooo! 👻',
+};
+
+ghost.call(myGhost);
